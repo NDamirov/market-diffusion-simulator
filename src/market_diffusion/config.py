@@ -16,11 +16,11 @@ class ProjectConfig:
     window_size: int = 20
     diffusion_steps: int = 100
     batch_size: int = 256
-    epochs_gpu: int = 500
-    epochs_cpu: int = 250
-    conditional_epochs_gpu: int = 250
-    conditional_epochs_cpu: int = 120
-    learning_rate: float = 2e-4
+    epochs_gpu: int = 2000
+    epochs_cpu: int = 2000
+    conditional_epochs_gpu: int = 2000
+    conditional_epochs_cpu: int = 2000
+    learning_rate: float = 1e-4
     hidden_dim: int = 256
     time_emb_dim: int = 64
     regime_emb_dim: int = 32
@@ -47,4 +47,8 @@ def seed_everything(seed: int) -> None:
 
 
 def get_device() -> torch.device:
-    return torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    if torch.cuda.is_available():
+        return torch.device("cuda")
+    if torch.backends.mps.is_available():
+        return torch.device("mps")
+    return torch.device("cpu")

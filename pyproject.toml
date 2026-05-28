@@ -1,0 +1,27 @@
+[project]
+name = "market-diffusion-simulator"
+version = "0.1.0"
+description = "Diffusion-based multi-asset stock scenario generator with a simple option-pricing layer."
+requires-python = ">=3.10"
+dependencies = [
+    "numpy",
+    "pandas",
+    "matplotlib",
+    "seaborn",
+    "scipy",
+    "torch",
+    "yfinance",
+    "ipython",
+    "jupyter",
+]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"

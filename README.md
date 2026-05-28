@@ -1,7 +1,7 @@
 # Diffusion-Based Stock Scenario Generator
 
-This project is a compact deep learning prototype for generating short-term multi-asset stock market scenarios.
-It is inspired by the paper **Multi-Asset Spot and Option Market Simulation**, but deliberately keeps the implementation feasible for a course project.
+This project is a prototype for generating short-term multi-asset stock market scenarios.
+It is inspired by the paper **Multi-Asset Spot and Option Market Simulation**.
 
 The repository implements:
 
@@ -11,8 +11,6 @@ The repository implements:
 - distribution, correlation, VaR, and CVaR evaluation;
 - a simple Black-Scholes option-pricing layer on top of generated stock paths.
 
-Important limitation: this is not a full option market simulator. It does not learn option chains, implied volatility surfaces, or arbitrage-free constraints.
-
 ## Repository Layout
 
 ```text
@@ -20,6 +18,7 @@ Final Project/
   README.md
   requirements.txt
   pyproject.toml
+  diffusion_stock_scenario_generator.ipynb
   src/market_diffusion/
     config.py        # project config, seeding, device
     data.py          # yfinance download, synthetic fallback, returns
@@ -28,32 +27,15 @@ Final Project/
     evaluation.py    # statistics, correlations, VaR/CVaR, ACF
     options.py       # Black-Scholes layer
     plotting.py      # notebook plotting helpers
-  notebooks/
-    final_project_colab.ipynb
-    legacy_single_notebook.ipynb
-  scripts/
-    run_smoke.py
 ```
 
-## Colab Usage
+## How to Run
 
-Clone or upload the full repository, then open:
-
-```text
-notebooks/final_project_colab.ipynb
-```
-
-The notebook adds `src/` to `sys.path`, so the code is imported from modules instead of being defined inline.
-
-## Local Smoke Test
-
-From the repository root:
+Open `diffusion_stock_scenario_generator.ipynb` from the repository root and select a Python environment with the dependencies installed:
 
 ```bash
-python scripts/run_smoke.py
+pip install -r requirements.txt
 ```
-
-The smoke test uses synthetic data and tiny training settings. It verifies that the modules import, train, and sample without running the full experiment.
 
 ## Main DL Idea
 
